@@ -1,0 +1,117 @@
+::ng-deep .options {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: rgba(191, 191, 191, 0.15);
+    position: relative;
+  }
+  
+  ::ng-deep .caption {
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  ::ng-deep .option {
+    margin-top: 10px;
+  }
+  
+  ::ng-deep .checkboxes-mode {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+  
+  ::ng-deep .option > .dx-selectbox {
+    width: 150px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  ::ng-deep .option > span {
+    margin-right: 10px;
+  }
+
+  .program-container {
+    padding: 53px 86px;
+    position: relative;
+  }
+
+  ::ng-deep .btn-add {
+    position: absolute;
+    right: 86px;
+    top: 48px;
+    background-color: #38AF71;
+    border-radius: 4px;
+    width: 173px;
+    
+    ::ng-deep .dx-button {
+      border: none;
+      color: #fff;
+      
+    }
+    
+    ::ng-deep .dx-icon {
+      color: #fff!important;
+    }
+  }
+
+  .program-container {
+    min-height: 100vh;
+    background-color: #fff;
+  }
+
+  ::ng-deep .dx-datagrid-search-panel {
+    border: 1px solid #C4C4C4;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  ::ng-deep .dx-editor-filled {
+    background-color:#fff !important;
+  }
+  
+  ::ng-deep.dx-datagrid-pager   {
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  ::ng-deep .dx-page-sizes {
+    margin-right: 50px;
+
+    ::ng-deep.dx-selectbox-container{
+      width: 100px;
+      border: 1px solid #ACACAC;
+      border-radius: 3px;
+      padding: 0 5px;
+    }
+  }
+
+  ::ng-deep.dx-light-pages {
+    display: none !important;
+  }
+
+  ::ng-deep .dx-prev-button  {
+    font-size: 30px !important;
+  }
+  ::ng-deep .dx-next-button  {
+    font-size: 30px !important;
+  }
+
+  ::ng-deep .dx-texteditor.dx-editor-filled::after {
+    border: none;
+  }
+  ::ng-deep .dx-texteditor.dx-editor-filled::before {
+    border: none;
+  }
+
+  ::ng-deep .dx-tabpanel-tabs {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+
+  }
+  ::ng-deep.dx-datagrid-header-panel {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  
+  

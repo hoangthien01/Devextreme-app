@@ -1,0 +1,31 @@
+:host {
+  flex-direction: column;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.layout-header {
+  z-index: 1501;
+
+  ::ng-deep .dx-toolbar {
+    background: transparent linear-gradient(180deg, #3A1660 0%, #543083 100%) 0% 0% no-repeat padding-box;
+  }
+  
+}
+
+.layout-body {
+  flex: 1;
+  min-height: 0;
+
+  ::ng-deep .dx-scrollable-wrapper {
+    background: transparent linear-gradient(180deg, #3A1660 0%, #543083 100%) 0% 0% no-repeat padding-box;
+    
+  }
+}
+
+.content {
+  flex-grow: 1;
+}
+
+
