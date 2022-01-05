@@ -1,0 +1,16 @@
+<div class="container">
+  <dx-form id="form" [formData]="program">
+    <!-- <dxi-item dataField="programId"></dxi-item> -->
+    <dxi-item dataField="programName"></dxi-item>
+    <dxi-item dataField="programType" editorType="dxDateBox" [editorOptions]="{ width: '100%' }"></dxi-item>
+    <dxi-item dataField="about"></dxi-item>
+    <dxi-item dataField="oganization"></dxi-item>
+    <dxi-item dataField="level" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
+    </dxi-item>
+    <dxi-item dataField="ageGroup" editorType="dxSelectBox" [editorOptions]="{ items: states }"></dxi-item>
+    <dxi-item dataField="carrer"></dxi-item>
+    <dxi-item dataField="programLength" [label]="{ text: 'Phone' }" [editorOptions]="{ mask: '+1 (000) 000-0000' }">
+    </dxi-item>
+    <!-- <dxi-item dataField="Notes" [colSpan]="2" editorType="dxTextArea" [editorOptions]="{ height: 140 }"></dxi-item> -->
+  </dx-form>
+</div>

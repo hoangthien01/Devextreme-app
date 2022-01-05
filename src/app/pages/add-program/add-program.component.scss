@@ -1,0 +1,25 @@
+::ng-deep .first-group,
+::ng-deep .second-group {
+  padding: 20px;
+}
+
+::ng-deep .second-group {
+  background-color: rgba(191, 191, 191, 0.15);
+}
+
+::ng-deep .form-avatar {
+  height: 128px;
+  width: 128px;
+  margin-right: 10px;
+  border: 1px solid #d2d3d5;
+  border-radius: 50%;
+}
+
+.container {
+  background-color: #f7f7f7;
+  padding: 105px 111px 135px;
+}
+::ng-deep.dx-form {
+  background-color: #fff;
+  padding: 53px 97px 117px 56px;
+}

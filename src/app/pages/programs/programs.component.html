@@ -3,72 +3,34 @@
     <dxi-item title="Active">
       <div *dxTemplate>
         <div id="grid">
-          <dx-data-grid
-            id="grid-container"
-            [dataSource]="programs"
-            keyExpr="programId"
-            [showBorders]="true"
-          >
-            <dxo-selection
-              [selectAllMode]="allMode"
-              [showCheckBoxesMode]="checkBoxesMode"
-              mode="multiple"
-            ></dxo-selection>
+          <dx-data-grid id="grid-container" [dataSource]="programs" keyExpr="programId" [showBorders]="true">
+            <dxo-selection [selectAllMode]="allMode" [showCheckBoxesMode]="checkBoxesMode" mode="multiple">
+            </dxo-selection>
             <dxo-paging [pageSize]="10"></dxo-paging>
-            <dxo-pager
-              [visible]="true"
-              [allowedPageSizes]="allowedPageSizes"
-              [displayMode]="displayMode"
-              [showPageSizeSelector]="showPageSizeSelector"
-              [showInfo]="showInfo"
-              [showNavigationButtons]="showNavButtons"
-            > </dxo-pager>
+            <dxo-pager [visible]="true" [allowedPageSizes]="allowedPageSizes" [displayMode]="displayMode"
+              [showPageSizeSelector]="showPageSizeSelector" [showInfo]="showInfo"
+              [showNavigationButtons]="showNavButtons"> </dxo-pager>
             <dxo-filter-row [visible]="false"></dxo-filter-row>
-            <dxi-column
-              dataField="programId"
-              caption="Program ID"
-              [width]="90"
-              [visible]="false"
-            ></dxi-column>
-            <dxi-column
-              dataField="programName"
-              caption="Program name"
-            ></dxi-column>
+            <dxi-column dataField="programId" caption="Program ID" [width]="90" [visible]="false"></dxi-column>
+            <dxi-column dataField="programName" caption="Program name"></dxi-column>
             <dxi-column dataField="offering" [width]="180"></dxi-column>
-            <dxi-column
-              dataField="publishedBy"
-              caption="Published by"
-            ></dxi-column>
-            <dxi-column
-              dataField="publishedOn"
-              caption="Published on"
-              dataType="date"
-            ></dxi-column>
+            <dxi-column dataField="publishedBy" caption="Published by"></dxi-column>
+            <dxi-column dataField="publishedOn" caption="Published on" dataType="date"></dxi-column>
             <dxi-column dataField="views" [width]="90"></dxi-column>
 
             <dxo-toolbar>
               <dxi-item location="before">
-                <dx-drop-down-button
-                  [items]="addListActions"
-                  text="Action on 0 selected"
-                >
+                <dx-drop-down-button [items]="addListActions" text="Action on 0 selected">
                 </dx-drop-down-button>
               </dxi-item>
               <dxi-item location="center">
                 abc
-                <dxo-search-panel
-                  [visible]="true"
-                  [width]="240"
-                  placeholder="Search program or skill"
-                ></dxo-search-panel>
+                <dxo-search-panel [visible]="true" [width]="240" placeholder="Search program or skill">
+                </dxo-search-panel>
               </dxi-item>
               <dxi-item location="after">
                 <span style="margin-right: 12px;">Filter By</span>
-                <dx-drop-down-button
-                  [items]="addListActions"
-                  text="All oganizations"
-                  type="success"
-                >
+                <dx-drop-down-button [items]="addListActions" text="All oganizations" type="success">
                 </dx-drop-down-button>
               </dxi-item>
             </dxo-toolbar>
@@ -138,66 +100,36 @@
             </div>
           </div> -->
 
-          
+
         </div>
       </div>
     </dxi-item>
     <dxi-item title="Inactive">
       <div *dxTemplate>
         <div id="grid">
-          <dx-data-grid
-            id="grid-container"
-            [dataSource]="programsInActive"
-            keyExpr="programId"
-            [showBorders]="true"
-          >
-            <dxo-selection
-              [selectAllMode]="allMode"
-              [showCheckBoxesMode]="checkBoxesMode"
-              mode="multiple"
-            ></dxo-selection>
+          <dx-data-grid id="grid-container" [dataSource]="programsInActive" keyExpr="programId" [showBorders]="true">
+            <dxo-selection [selectAllMode]="allMode" [showCheckBoxesMode]="checkBoxesMode" mode="multiple">
+            </dxo-selection>
             <dxo-paging [pageSize]="10"></dxo-paging>
             <dxo-filter-row [visible]="false"></dxo-filter-row>
-            <dxi-column
-              dataField="programId"
-              caption="Program ID"
-              [width]="90"
-              [visible]="false"
-            ></dxi-column>
-            <dxi-column
-              dataField="programName"
-              caption="Program name"
-            ></dxi-column>
+            <dxi-column dataField="programId" caption="Program ID" [width]="90" [visible]="false"></dxi-column>
+            <dxi-column dataField="programName" caption="Program name"></dxi-column>
             <dxi-column dataField="offering" [width]="180"></dxi-column>
-            <dxi-column
-              dataField="publishedBy"
-              caption="Published by"
-            ></dxi-column>
-            <dxi-column
-              dataField="publishedOn"
-              caption="Published on"
-              dataType="date"
-            ></dxi-column>
+            <dxi-column dataField="publishedBy" caption="Published by"></dxi-column>
+            <dxi-column dataField="publishedOn" caption="Published on" dataType="date"></dxi-column>
             <dxi-column dataField="views" [width]="90"></dxi-column>
           </dx-data-grid>
           <div class="options">
             <div class="caption">Options</div>
             <div class="option">
               <span>Select All Mode</span>
-              <dx-select-box
-                id="select-all-mode"
-                [dataSource]="['allPages', 'page']"
-                [(value)]="allMode"
-                [disabled]="checkBoxesMode === 'none'"
-              ></dx-select-box>
+              <dx-select-box id="select-all-mode" [dataSource]="['allPages', 'page']" [(value)]="allMode"
+                [disabled]="checkBoxesMode === 'none'"></dx-select-box>
             </div>
             <div class="option checkboxes-mode">
               <span>Show Checkboxes Mode</span>
-              <dx-select-box
-                id="show-checkboxes-mode"
-                [dataSource]="['none', 'onClick', 'onLongTap', 'always']"
-                [(value)]="checkBoxesMode"
-              ></dx-select-box>
+              <dx-select-box id="show-checkboxes-mode" [dataSource]="['none', 'onClick', 'onLongTap', 'always']"
+                [(value)]="checkBoxesMode"></dx-select-box>
             </div>
           </div>
         </div>
@@ -207,12 +139,7 @@
       <!-- ... -->
     </dxi-item>
   </dx-tab-panel>
-  <dx-drop-down-button
-    [items]="addListActions"
-    text="Add new"
-    type="success"
-    icon="add"
-    class="btn-add"
-  >
+  <dx-drop-down-button [items]="addListActions" (onItemClick)="logAction($event)" text="Add new" type="success"
+    icon="add" class="btn-add">
   </dx-drop-down-button>
 </div>

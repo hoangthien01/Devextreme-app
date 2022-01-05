@@ -29,10 +29,13 @@ import {
   DxFormModule,
   DxButtonModule,
   DxDropDownButtonModule,
+  DxTextAreaModule,
+  DxDateBoxModule,
 } from 'devextreme-angular';
+import { AddProgramComponent } from './pages/add-program/add-program.component';
 
 @NgModule({
-  declarations: [AppComponent, ProgramsComponent],
+  declarations: [AppComponent, ProgramsComponent, AddProgramComponent],
   imports: [
     BrowserModule,
     SideNavOuterToolbarModule,
@@ -55,6 +58,8 @@ import {
     DxFormModule,
     DxButtonModule,
     DxDropDownButtonModule,
+    DxTextAreaModule,
+    DxDateBoxModule,
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent],
