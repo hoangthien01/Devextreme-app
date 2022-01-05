@@ -5,19 +5,23 @@ export class programInfo {
 
   programName!: string;
 
-  programType!: string;
+  programType!: Array<String>;
 
   about!: string;
 
-  oganization!: string;
+  oganization!:  Array<String>;
 
   level!: string;
+  website!: string;
 
   ageGroup!: number;
 
-  carrer!: string;
+  carrer!: Array<String>;
 
-  programLength!: number;
+  programLength = {
+    num: 0,
+    name: ''
+  };
 
   learningMethod = {
     name: '',
@@ -33,13 +37,28 @@ export class programInfo {
 const programs: programInfo = {
   programId: 122,
   programName: 'John',
-  programType: 'Heart',
-  about: 'CEO',
-  oganization: '1964/03/16',
+  programType: [
+    'Type A',
+    'Type B'
+  ],
+  about: '',
+  oganization: [
+    'Oganization A',
+    'Oganization B',
+  ],
   level: 'master',
   ageGroup: 22,
-  carrer: '351 S Hill St.',
-  programLength: 11,
+  website : '',
+  carrer: [
+    'Carrer 1',
+    'Carrer 2'
+  ],
+  programLength: 
+    {
+      num:1, 
+      name:'Weeks',
+    }
+  ,
   learningMethod: {
     name: 'Js',
     address: 'DaNang',

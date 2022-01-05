@@ -113,5 +113,17 @@
     margin-bottom: 20px;
     padding: 0;
   }
+
+  ::ng-deep .dx-tabs {
+    background-color: #fff !important;
+  }
+
+  ::ng-deep .dx-tab-selected {
+    color: #38AF71 !important;
+  }
+
+  ::ng-deep .dx-tab-selected::before {
+    background-color: #38AF71 !important;
+  }
   
   

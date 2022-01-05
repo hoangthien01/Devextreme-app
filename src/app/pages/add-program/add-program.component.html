@@ -1,16 +1,94 @@
 <div class="container">
+  <dx-button
+    text="Back to programs"
+    icon="back"
+    (onClick)="goBack()"
+    class="btn-back"
+    >
+  </dx-button>
   <dx-form id="form" [formData]="program">
     <!-- <dxi-item dataField="programId"></dxi-item> -->
-    <dxi-item dataField="programName"></dxi-item>
-    <dxi-item dataField="programType" editorType="dxDateBox" [editorOptions]="{ width: '100%' }"></dxi-item>
-    <dxi-item dataField="about"></dxi-item>
-    <dxi-item dataField="oganization"></dxi-item>
-    <dxi-item dataField="level" editorType="dxSelectBox" [editorOptions]="{ items: positions, value: '' }">
+    <dxi-item dataField="programName" [label]="{ text: 'Program name' }"></dxi-item>
+    <dxi-item dataField="programType" [label]="{ text: 'Program type' }" [editorOptions]="{ width: '40%' }">
+      <dx-select-box
+      [items]="program.programType"
+      placeholder="Select a program type"
+      [showClearButton]="true"
+    ></dx-select-box>
     </dxi-item>
-    <dxi-item dataField="ageGroup" editorType="dxSelectBox" [editorOptions]="{ items: states }"></dxi-item>
-    <dxi-item dataField="carrer"></dxi-item>
-    <dxi-item dataField="programLength" [label]="{ text: 'Phone' }" [editorOptions]="{ mask: '+1 (000) 000-0000' }">
+    <dxi-item  [label]="{ text: 'About this program' }" class="about" >
+      <dx-text-area [height]="200" [(value)]="program.about" placeholder="A summary or description of the program"
+      (onKeyUp)="aboutFieldChange($event)"
+      >
+      </dx-text-area>
+    </dxi-item>
+    <dxi-item dataField="oganization" [label]="{ text: 'Ognization name' }" [editorOptions]="{ width: '40%' }">
+      <dx-select-box
+      [items]="program.oganization"
+      placeholder="Select a oganization"
+      [value]="program.oganization[0]"
+      [showClearButton]="true"
+    ></dx-select-box>
+    </dxi-item>
+    <dxi-item dataField="level" [label]="{ text: 'Program level' }" editorType="dxSelectBox" [editorOptions]="{ width: '40%' }">
+    </dxi-item>
+    <dxi-item dataField="website" [label]="{ text: 'Website' }">
+      <dx-text-box [value]="program.website"></dx-text-box>
+      <p style="color: #727272;">Enter in the URL to this program</p>
+    </dxi-item>
+    <dxi-item dataField="ageGroup" [label]="{ text: 'Age group' }">
+      <dx-range-slider
+        [min]="0"
+        [max]="100"
+        [start]="20"
+        [end]="60"
+        style="width: 40%;"
+      ></dx-range-slider>
+    </dxi-item>
+    <dxi-item dataField="carrer" [label]="{ text: 'Carrer pathway (Optional) ' }" [editorOptions]="{ width: '40%' }">
+      <dx-select-box
+        [items]="program.carrer"
+        placeholder="Select a industry"
+        [showClearButton]="true"
+        style="width: 40%;"
+      ></dx-select-box>
+    </dxi-item>
+    <dxi-item dataField="programLength" [label]="{ text: 'Program Length (Optional)' }" class="program-length" style="width: 40%;">
+      <dx-select-box
+        [items]="programLengthNum"
+        [value]="programLengthNum[0]"
+        style="width: 45%;"
+      ></dx-select-box>
+      <dx-select-box
+        [items]="programLengthName"
+        [value]="programLengthName[0]"
+        style="width: 45%;"
+      ></dx-select-box>
+    </dxi-item>
+    <dxi-item [label]="{ text: 'Learning method' }" class="learning-method" >
+      <dx-radio-group [items]="learningMethodRadio" [value]="learningMethodRadio[0]">
+      </dx-radio-group>
+      <dx-text-box [value]="program.learningMethod.address" style="flex: 1;margin-left: 20px;"></dx-text-box>
+    </dxi-item>
+    <dxi-item  [label]="{ text: 'Skill' }" class="program-skill">
+      <dx-text-box [value]="program.learningMethod.address"style="width: 60%;"></dx-text-box>
+      <dx-select-box
+        [items]="programLengthNum"
+        [value]="programLengthNum[0]"
+        style="width: 20%;"
+      ></dx-select-box>
+      <dx-button text="Add" type="success"></dx-button>
     </dxi-item>
     <!-- <dxi-item dataField="Notes" [colSpan]="2" editorType="dxTextArea" [editorOptions]="{ height: 140 }"></dxi-item> -->
   </dx-form>
+  <div class="offering">
+    <h2>Program Offerings</h2>
+    <hr>
+    <div class="add-offering">
+      <span class="add-offering__border">
+        <i class="dx-icon-add"></i>
+      </span>
+      <p>Add offering</p>
+    </div>
+  </div>
 </div>

@@ -31,6 +31,10 @@ import {
   DxDropDownButtonModule,
   DxTextAreaModule,
   DxDateBoxModule,
+  DxRangeSliderModule,
+  DxNumberBoxModule,
+  DxTextBoxModule,
+  DxRadioGroupModule
 } from 'devextreme-angular';
 import { AddProgramComponent } from './pages/add-program/add-program.component';
 
@@ -59,7 +63,11 @@ import { AddProgramComponent } from './pages/add-program/add-program.component';
     DxButtonModule,
     DxDropDownButtonModule,
     DxTextAreaModule,
+    DxRadioGroupModule,
+    DxTextBoxModule,
     DxDateBoxModule,
+    DxRangeSliderModule,
+    DxNumberBoxModule,
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent],
