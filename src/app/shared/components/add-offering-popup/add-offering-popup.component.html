@@ -1,0 +1,37 @@
+<dx-popup
+  [width]="660"
+  [height]="540"
+  [showTitle]="true"
+  title="Add Program Offering"
+  [dragEnabled]="false"
+  [closeOnOutsideClick]="true"
+  [(visible)]="popupVisible"
+>
+  <div *dxTemplate="let data of 'content'">
+    <div class="popup-property-details">
+      <div class="large-text">
+        {{ currentHouse.Price | currency: "USD":"symbol":"1.0-0" }}
+      </div>
+      <div class="opacity">
+        {{ currentHouse.Address }}, {{ currentHouse.City }},
+        {{ currentHouse.State }}
+      </div>
+      <dx-button
+        class="favorites"
+        [text]="
+          currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES
+        "
+        icon="favorites"
+        [width]="260"
+        [height]="44"
+        (onClick)="changeFavoriteState($event)"
+      >
+      </dx-button>
+      <div class="images">
+        <img src="{{ currentHouse.Image }}" />
+        <img src="{{ currentHouse.Image.replace('.jpg', 'b.jpg') }}" />
+      </div>
+      <div>{{ currentHouse.Features }}</div>
+    </div>
+  </div>
+</dx-popup>
