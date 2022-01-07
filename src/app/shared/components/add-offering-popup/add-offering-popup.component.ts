@@ -1,45 +1,63 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  DxButtonModule,
+  DxDateBoxModule,
+  DxFormModule,
+  DxPopupModule,
+  DxTextBoxModule,
+  DxValidatorModule,
+} from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import { Service, House, Agent } from './add-offering-program.service';
+import { Service, Offering } from './add-offering-program.service';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { DxiItemModule } from 'devextreme-angular/ui/nested';
 @Component({
   selector: 'app-add-offering-popup',
   templateUrl: './add-offering-popup.component.html',
   styleUrls: ['./add-offering-popup.component.scss'],
 })
 export class AddOfferingPopupComponent {
-  houses: House[];
-
-  currentHouse: House;
+  offering = new Offering();
+  learningMethodRadio = ['Hybird', 'In-Person', 'Online'];
+  learningMethodName = ['Weeks', 'Months', 'Years'];
+  labelMode = 'outside';
+  labelLocation = 'top';
   @Input() popupVisible: boolean = false;
-
+  @Output() closePopup: EventEmitter<boolean> = new EventEmitter();
   ADD_TO_FAVORITES = 'Add to Favorites';
 
   REMOVE_FROM_FAVORITES = 'Remove from Favorites';
 
-  constructor(service: Service) {
-    this.houses = service.getHouses();
-    this.currentHouse = this.houses[0];
+  constructor(service: Service, private router: Router) {
+    console.log('add init');
   }
 
-  showHouse(house: House) {
-    this.currentHouse = house;
-    this.popupVisible = true;
+  emitClosePopup() {
+    console.log('emit close');
+    this.closePopup.emit(false);
   }
 
-  changeFavoriteState(e: any) {
-    const favoriteState = !this.currentHouse.Favorite;
-    const message = `This item has been ${
-      favoriteState ? 'added to' : 'removed from'
-    } the Favorites list!`;
-    this.currentHouse.Favorite = favoriteState;
-
-    notify(
-      {
-        message,
-        width: 450,
-      },
-      favoriteState ? 'success' : 'error',
-      2000
-    );
+  onFormSubmit(e: any) {
+    console.log('submit');
   }
 }
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+    DxPopupModule,
+    DxButtonModule,
+    DxiItemModule,
+    DxFormModule,
+    DxValidatorModule,
+    DxTextBoxModule,
+    DxDateBoxModule,
+  ],
+  declarations: [AddOfferingPopupComponent],
+  exports: [AddOfferingPopupComponent],
+  providers: [Service],
+})
+export class AddOfferingPopupModule {}

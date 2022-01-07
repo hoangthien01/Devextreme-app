@@ -5,22 +5,22 @@ export class programInfo {
 
   programName!: string;
 
-  programType!: Array<String>;
+  programType!: String;
 
   about!: string;
 
-  oganization!:  Array<String>;
+  oganization!: String;
 
   level!: string;
   website!: string;
 
   ageGroup!: number;
 
-  carrer!: Array<String>;
+  carrer!: String;
 
   programLength = {
     num: 0,
-    name: ''
+    name: '',
   };
 
   learningMethod = {
@@ -36,36 +36,25 @@ export class programInfo {
 
 const programs: programInfo = {
   programId: 122,
-  programName: 'John',
-  programType: [
-    'Type A',
-    'Type B'
-  ],
+  programName: '',
+  programType: '',
   about: '',
-  oganization: [
-    'Oganization A',
-    'Oganization B',
-  ],
+  oganization: '',
   level: 'master',
   ageGroup: 22,
-  website : '',
-  carrer: [
-    'Carrer 1',
-    'Carrer 2'
-  ],
-  programLength: 
-    {
-      num:1, 
-      name:'Weeks',
-    }
-  ,
+  website: '',
+  carrer: '',
+  programLength: {
+    num: 1,
+    name: '',
+  },
   learningMethod: {
-    name: 'Js',
-    address: 'DaNang',
+    name: '',
+    address: '',
   },
   skill: {
-    type: 'action',
-    level: 'master',
+    type: '',
+    level: '',
   },
 };
 

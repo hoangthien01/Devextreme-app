@@ -1,37 +1,151 @@
 <dx-popup
-  [width]="660"
-  [height]="540"
+  [width]="851"
+  height="auto"
   [showTitle]="true"
   title="Add Program Offering"
   [dragEnabled]="false"
   [closeOnOutsideClick]="true"
   [(visible)]="popupVisible"
+  (onHiding)="emitClosePopup()"
 >
-  <div *dxTemplate="let data of 'content'">
-    <div class="popup-property-details">
-      <div class="large-text">
-        {{ currentHouse.Price | currency: "USD":"symbol":"1.0-0" }}
-      </div>
-      <div class="opacity">
-        {{ currentHouse.Address }}, {{ currentHouse.City }},
-        {{ currentHouse.State }}
-      </div>
-      <dx-button
-        class="favorites"
-        [text]="
-          currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES
-        "
-        icon="favorites"
-        [width]="260"
-        [height]="44"
-        (onClick)="changeFavoriteState($event)"
+  <form (submit)="onFormSubmit($event)" class="add-offering-form">
+    <dx-form
+      id="form"
+      [formData]="offering"
+      [labelLocation]="labelLocation"
+      [labelMode]="labelMode"
+    >
+      <dxi-item
+        [label]="{ text: 'Learning methods' }"
+        itemType="group"
+        cssClass="learning-method"
       >
-      </dx-button>
-      <div class="images">
-        <img src="{{ currentHouse.Image }}" />
-        <img src="{{ currentHouse.Image.replace('.jpg', 'b.jpg') }}" />
-      </div>
-      <div>{{ currentHouse.Features }}</div>
-    </div>
-  </div>
+        <dxi-item
+          dataField="offering.name"
+          editorType="dxRadioGroup"
+          [label]="{ visible: false }"
+          [editorOptions]="{ dataSource: learningMethodRadio, value: 'Hybird' }"
+        >
+        </dxi-item>
+        <dxi-item
+          dataField="offering.address"
+          [label]="{ visible: false }"
+          [editorOptions]="{
+            items: learningMethodName,
+            placeholder: 'Address'
+          }"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Address is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-validation-rule
+          type="required"
+          message="Learning methods is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        [label]="{ text: 'Cost' }"
+        itemType="group"
+        cssClass="cost-group"
+        [colCount]="3"
+      >
+        <dxi-item
+          dataField="offering.cost.notation"
+          [label]="{ visible: false }"
+          [colSpan]="1"
+        >
+        </dxi-item>
+        <dxi-item
+          dataField="offering.cost.num"
+          [label]="{ visible: false }"
+          editorType="dxSelectBox"
+          [editorOptions]="{
+            items: learningMethodName
+          }"
+          [colSpan]="1"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Address is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-validation-rule
+          type="required"
+          message="Cost is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item
+        [label]="{ text: 'Program date (Optional)', labelLocation: 'top' }"
+        itemType="group"
+        cssClass="date-group"
+        colCount="3"
+      >
+        <dxi-item
+          dataField="offering.date.startDate"
+          colSpan="1"
+          [label]="{
+            text: 'Start date',
+            labelLocation: 'top',
+            labelMode: 'outside'
+          }"
+        >
+          <dx-date-box type="date"> </dx-date-box>
+        </dxi-item>
+        <dxi-item
+          dataField="offering.date.endDate"
+          [label]="{ text: 'End date' }"
+        >
+          <dx-date-box type="date"> </dx-date-box>
+        </dxi-item>
+        <dxi-item editorType="empty"></dxi-item>
+        <dxi-item
+          dataField="offering.date.startDate"
+          [label]="{ text: 'Start time' }"
+          colSpan="1"
+        >
+          <dx-date-box type="time"> </dx-date-box>
+        </dxi-item>
+        <dxi-item
+          dataField="offering.date.endDate"
+          [label]="{ text: 'End time' }"
+          colSpan="1"
+        >
+          <dx-date-box type="time"> </dx-date-box>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item
+        dataField="offering.deadline"
+        editorType="dxDateBox"
+        [label]="{ text: 'Enrollment deadline (Optional)' }"
+        cssClass="deadline"
+        [editorOptions]="{ width: '30%' }"
+      >
+      </dxi-item>
+      <dxi-item itemType="group" cssClass="add-offering-actions" colCount="5">
+        <dxi-item editorType="empty"></dxi-item>
+        <dxi-item editorType="empty"></dxi-item>
+        <dxi-item editorType="empty"></dxi-item>
+        <dxi-item
+          itemType="button"
+          [colSpan]="1"
+          [buttonOptions]="{
+            text: 'Cancel'
+          }"
+        >
+        </dxi-item>
+        <dxi-item
+          itemType="button"
+          [colSpan]="1"
+          [buttonOptions]="{
+            text: 'Add',
+            type: 'success',
+            useSubmitBehavior: true
+          }"
+        >
+        </dxi-item>
+      </dxi-item>
+    </dx-form>
+  </form>
 </dx-popup>

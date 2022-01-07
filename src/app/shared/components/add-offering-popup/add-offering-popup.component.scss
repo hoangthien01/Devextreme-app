@@ -1,0 +1,49 @@
+::ng-deep.add-offering-form {
+  padding: 0px;
+
+  .dx-form {
+    padding: 0;
+  }
+}
+
+::ng-deep .dx-field-item-label {
+  padding-left: 0;
+}
+
+::ng-deep.dx-popup-content {
+  padding-right: 88px;
+}
+
+::ng-deep.date-group {
+  .dx-first-row {
+    display: block;
+  }
+
+  .dx-field-item-content {
+    .dx-field-item-label-location-top {
+      padding-left: 0;
+    }
+  }
+
+  .dx-texteditor-input {
+    padding-right: 0 !important;
+  }
+
+  .dx-field-item {
+    display: block;
+  }
+  .dx-first-col,
+  .dx-last-col {
+    display: block;
+  }
+}
+
+::ng-deep .add-offering-actions {
+  .dx-button {
+    width: 100%;
+  }
+
+  .dx-item-content {
+    justify-items: flex-end !important;
+  }
+}

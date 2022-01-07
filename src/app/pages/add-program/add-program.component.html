@@ -4,86 +4,243 @@
     icon="back"
     (onClick)="goBack()"
     class="btn-back"
-    >
+  >
   </dx-button>
-  <dx-form id="form" [formData]="program">
-    <!-- <dxi-item dataField="programId"></dxi-item> -->
-    <dxi-item dataField="programName" [label]="{ text: 'Program name' }"></dxi-item>
-    <dxi-item dataField="programType" [label]="{ text: 'Program type' }" [editorOptions]="{ width: '40%' }">
-      <dx-select-box
-      [items]="program.programType"
-      placeholder="Select a program type"
-      [showClearButton]="true"
-    ></dx-select-box>
-    </dxi-item>
-    <dxi-item  [label]="{ text: 'About this program' }" class="about" >
-      <dx-text-area [height]="200" [(value)]="program.about" placeholder="A summary or description of the program"
-      (onKeyUp)="aboutFieldChange($event)"
+  <form (submit)="onFormSubmit($event)">
+    <dx-form id="form" [formData]="program">
+      <!-- <dxi-item dataField="programId"></dxi-item> -->
+      <dxi-item dataField="programName" [label]="{ text: 'Program name' }">
+        <dxi-validation-rule
+          type="required"
+          message="Program name is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="programType"
+        editorType="dxSelectBox"
+        [label]="{ text: 'Program type' }"
+        [editorOptions]="{
+          width: '40%',
+          items: programType,
+          searchEnabled: true,
+          placeholder: 'Select a program type'
+        }"
       >
-      </dx-text-area>
-    </dxi-item>
-    <dxi-item dataField="oganization" [label]="{ text: 'Ognization name' }" [editorOptions]="{ width: '40%' }">
-      <dx-select-box
-      [items]="program.oganization"
-      placeholder="Select a oganization"
-      [value]="program.oganization[0]"
-      [showClearButton]="true"
-    ></dx-select-box>
-    </dxi-item>
-    <dxi-item dataField="level" [label]="{ text: 'Program level' }" editorType="dxSelectBox" [editorOptions]="{ width: '40%' }">
-    </dxi-item>
-    <dxi-item dataField="website" [label]="{ text: 'Website' }">
-      <dx-text-box [value]="program.website"></dx-text-box>
-      <p style="color: #727272;">Enter in the URL to this program</p>
-    </dxi-item>
-    <dxi-item dataField="ageGroup" [label]="{ text: 'Age group' }">
-      <dx-range-slider
-        [min]="0"
-        [max]="100"
-        [start]="20"
-        [end]="60"
-        style="width: 40%;"
-      ></dx-range-slider>
-    </dxi-item>
-    <dxi-item dataField="carrer" [label]="{ text: 'Carrer pathway (Optional) ' }" [editorOptions]="{ width: '40%' }">
-      <dx-select-box
-        [items]="program.carrer"
-        placeholder="Select a industry"
-        [showClearButton]="true"
-        style="width: 40%;"
-      ></dx-select-box>
-    </dxi-item>
-    <dxi-item dataField="programLength" [label]="{ text: 'Program Length (Optional)' }" class="program-length" style="width: 40%;">
+        <dxi-validation-rule
+          type="required"
+          message="Program type is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="about"
+        [label]="{ text: 'About this program' }"
+        editorType="dxTextArea"
+        [editorOptions]="{
+          height: 200,
+          placeholder: 'A summary or description of the program'
+        }"
+        (onChange)="aboutFieldChange($event)"
+        class="about"
+      >
+        <dxi-validation-rule
+          type="required"
+          message="About this program is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="oganization"
+        editorType="dxSelectBox"
+        [label]="{ text: 'Ognization name' }"
+        [editorOptions]="{
+          width: '40%',
+          items: oganizationName,
+          placeholder: 'Select a oganization'
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          message="Ognization name is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="website" [label]="{ text: 'Website' }">
+        <dx-text-box [(value)]="program.website"></dx-text-box>
+        <p style="color: #727272">Enter in the URL to this program</p>
+        <dxi-validation-rule
+          type="required"
+          message="Ognization name is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="level"
+        editorType="dxSelectBox"
+        [label]="{ text: 'Program level' }"
+        [editorOptions]="{
+          items: programLevels,
+          width: '40%',
+          placeholder: 'Select a level'
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          message="Program level is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="ageGroup"
+        editorType="dxRangeSlider"
+        [label]="{ text: 'Age group' }"
+        [editorOptions]="{
+          width: '40%',
+          start: 10,
+          end: 55,
+          min: 0,
+          max: 60,
+          tooltip: tooltip
+        }"
+      >
+        <dxi-validation-rule
+          type="required"
+          message="Age group is required"
+        ></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item
+        dataField="carrer"
+        editorType="dxSelectBox"
+        [label]="{ text: 'Carrer pathway (Optional) ' }"
+        [editorOptions]="{
+          width: '40%',
+          items: programCarrer,
+          placeholder: 'Select a industry'
+        }"
+      >
+      </dxi-item>
+
+      <dxi-item
+        itemType="group"
+        [colCount]="5"
+        [label]="{ text: 'Program Length (Optional)' }"
+        class="program-length"
+      >
+        <dxi-item
+          dataField="programLength.num"
+          editorType="dxSelectBox"
+          [colSpan]="1"
+          [label]="{ visible: false }"
+          [editorOptions]="{ items: programLengthNum }"
+        >
+        </dxi-item>
+        <dxi-item
+          dataField="programLength.name"
+          editorType="dxSelectBox"
+          [colSpan]="1"
+          [label]="{ visible: false }"
+          [editorOptions]="{ items: programLengthName }"
+        >
+        </dxi-item>
+      </dxi-item>
+
+      <dxi-item
+        [label]="{ text: 'Learning method' }"
+        itemType="group"
+        [colCount]="2"
+        cssClass="learning-method"
+      >
+        <dxi-item
+          dataField="learningMethod.name"
+          editorType="dxRadioGroup"
+          [label]="{ visible: false }"
+          [colSpan]="1"
+          [editorOptions]="{ dataSource: learningMethodRadio, value: 'Hybird' }"
+        >
+        </dxi-item>
+        <dxi-item
+          dataField="learningMethod.address"
+          [colSpan]="1"
+          [label]="{ visible: false }"
+          [editorOptions]="{ items: programLengthName, placeholder: 'Address' }"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Address is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <!-- <dxi-validation-rule
+        type="required"
+        message="Age group is required"
+      ></dxi-validation-rule> -->
+      </dxi-item>
+
+      <dxi-item
+        [label]="{ text: 'Skill' }"
+        itemType="group"
+        cssClass="program-skill"
+        [colCount]="7"
+      >
+        <dxi-item
+          dataField="skill.type"
+          [label]="{ visible: false }"
+          [editorOptions]="{
+            placeholder: 'Type a skill'
+          }"
+          [colSpan]="4"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Skill is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          dataField="skill.level"
+          [label]="{ visible: false }"
+          editorType="dxSelectBox"
+          [editorOptions]="{
+            items: programLengthNum,
+            placeholder: 'Select level'
+          }"
+          [colSpan]="2"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Skill is required"
+          ></dxi-validation-rule>
+        </dxi-item>
+        <dxi-item
+          itemType="button"
+          horizontalAlignment="left"
+          [colSpan]="1"
+          [buttonOptions]="{
+            text: 'Add',
+            type: 'success',
+            useSubmitBehavior: true
+          }"
+          (onClick)="addProgram()"
+        >
+        </dxi-item>
+        <!-- <dx-text-box
+        [(value)]="program.skill.type"
+        style="width: 60%"
+      ></dx-text-box>
       <dx-select-box
         [items]="programLengthNum"
-        [value]="programLengthNum[0]"
-        style="width: 45%;"
+        [(value)]="program.skill.level"
+        style="width: 20%"
       ></dx-select-box>
-      <dx-select-box
-        [items]="programLengthName"
-        [value]="programLengthName[0]"
-        style="width: 45%;"
-      ></dx-select-box>
-    </dxi-item>
-    <dxi-item [label]="{ text: 'Learning method' }" class="learning-method" >
-      <dx-radio-group [items]="learningMethodRadio" [value]="learningMethodRadio[0]">
-      </dx-radio-group>
-      <dx-text-box [value]="program.learningMethod.address" style="flex: 1;margin-left: 20px;"></dx-text-box>
-    </dxi-item>
-    <dxi-item  [label]="{ text: 'Skill' }" class="program-skill">
-      <dx-text-box [value]="program.learningMethod.address"style="width: 60%;"></dx-text-box>
-      <dx-select-box
-        [items]="programLengthNum"
-        [value]="programLengthNum[0]"
-        style="width: 20%;"
-      ></dx-select-box>
-      <dx-button text="Add" type="success"></dx-button>
-    </dxi-item>
-    <!-- <dxi-item dataField="Notes" [colSpan]="2" editorType="dxTextArea" [editorOptions]="{ height: 140 }"></dxi-item> -->
-  </dx-form>
-  <div class="offering">
+      <dx-button text="Add" type="success" (onClick)="addProgram()"></dx-button> -->
+      </dxi-item>
+      <!-- <dxi-item dataField="Notes" [colSpan]="2" editorType="dxTextArea" [editorOptions]="{ height: 140 }"></dxi-item> -->
+    </dx-form>
+  </form>
+
+  <div class="offering" (click)="openAddOfferingPopup()">
     <h2>Program Offerings</h2>
-    <hr>
+    <hr />
     <div class="add-offering">
       <span class="add-offering__border">
         <i class="dx-icon-add"></i>
@@ -91,4 +248,20 @@
       <p>Add offering</p>
     </div>
   </div>
+
+  <div class="actions">
+    <div>
+      <dx-button text="Cancel"></dx-button>
+    </div>
+    <div>
+      <dx-button text="Preview"></dx-button>
+      <dx-button text="Save for later"></dx-button>
+      <dx-button text="Publish" type="success" class="btn-publish"></dx-button>
+    </div>
+  </div>
+
+  <app-add-offering-popup
+    [popupVisible]="popupVisible"
+    (closePopup)="closePopupHandler($event)"
+  ></app-add-offering-popup>
 </div>

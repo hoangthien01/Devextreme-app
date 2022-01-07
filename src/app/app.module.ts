@@ -34,14 +34,25 @@ import {
   DxRangeSliderModule,
   DxNumberBoxModule,
   DxTextBoxModule,
-  DxRadioGroupModule
+  DxRadioGroupModule,
+  DxPopupModule,
 } from 'devextreme-angular';
 import { AddProgramComponent } from './pages/add-program/add-program.component';
+import {
+  AddOfferingPopupComponent,
+  AddOfferingPopupModule,
+} from './shared/components/add-offering-popup/add-offering-popup.component';
 
 @NgModule({
-  declarations: [AppComponent, ProgramsComponent, AddProgramComponent],
+  declarations: [
+    AppComponent,
+    ProgramsComponent,
+    AddProgramComponent,
+    // AddOfferingPopupComponent,
+  ],
   imports: [
     BrowserModule,
+    AddOfferingPopupModule,
     SideNavOuterToolbarModule,
     SideNavInnerToolbarModule,
     SingleCardModule,
@@ -68,6 +79,7 @@ import { AddProgramComponent } from './pages/add-program/add-program.component';
     DxDateBoxModule,
     DxRangeSliderModule,
     DxNumberBoxModule,
+    DxPopupModule,
   ],
   providers: [AuthService, ScreenService, AppInfoService],
   bootstrap: [AppComponent],

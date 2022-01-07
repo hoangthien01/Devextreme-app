@@ -1,5 +1,20 @@
 import { Injectable } from '@angular/core';
 
+export class Offering {
+  learningMethod = { name: String, address: String };
+  cost = {
+    notation: '',
+    num: '',
+  };
+  date = {
+    startDate: Date,
+    endDate: Date,
+    startTime: Date,
+    endTime: Date,
+    days: [String],
+  };
+  deadline = Date;
+}
 export class Agent {
   ID!: number;
 
